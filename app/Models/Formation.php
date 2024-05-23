@@ -17,6 +17,6 @@ class Formation extends Model
     }
     public function etudiants()
     {
-        return $this->belongsToMany(Formation::class, 'avis', 'idE', 'idf')->withPivot('points');
+        return $this->belongsToMany(Formation::class, 'avis', 'idf', 'idE')->withPivot('points');
     }
 }

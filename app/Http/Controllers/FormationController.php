@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classe;
-use App\Models\Etudiant;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
-class EtudiantController extends Controller
+class FormationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $etudiants = Etudiant::all();
-        return view('Etudiant.index', compact('etudiants'));
+        $formations = Formation::all();
+        return view('Formation.index', compact('formations'));
     }
 
     /**
@@ -38,11 +37,10 @@ class EtudiantController extends Controller
      */
     public function show(string $id)
     {
-        $etudiant = Etudiant::find($id);
-        $classe = $etudiant->classe;
-        $formation = $classe->formation;
-        $av = $etudiant->formations;
-        return  view('Etudiant.show', compact('etudiant', 'classe', 'formation', 'av'));
+        $formation = Formation::class::find($id);
+        $classe = $formation->classes;
+        $avis = $formation->etudiants;
+        return view('Formation.show', compact('formation', 'classe', 'avis'));
     }
 
     /**
@@ -50,21 +48,15 @@ class EtudiantController extends Controller
      */
     public function edit(string $id)
     {
-        $etudiant = Etudiant::find($id);
-        $classe = $etudiant->classe;
-        $idFind = Classe::where('idc', '!=', $classe->idc)->orderBy('idc')->get('idc');
-        return view('Etudiant.edit', compact('classe', 'idFind', 'etudiant'));
+        //
     }
 
-    /*
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        $etudiant = Etudiant::find($id);
-        $etudiant->classe->idc = $request->idc;
-        $etudiant->save();
-        return redirect()->route('etudiants.index')->with('success', 'Modification avec success');
+        //
     }
 
     /**

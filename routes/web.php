@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\FormationController;
 use App\Http\Controllers\VoitureController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 });
 Route::resource('etudiants', EtudiantController::class);
+Route::resource('formations', FormationController::class);

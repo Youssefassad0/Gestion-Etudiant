@@ -68,6 +68,19 @@
                 </ul>
             </div>
         </div>
+        <div class="card mt-3">
+            
+    <h1>les avis</h1>
+    @if(count($av)>0)
+        
+        @foreach($av as $f)
+            <h4>id formation : {{$f->idf}}</h4>
+            <h4>les points données :{{$f->pivot->points}}</h4>
+        @endforeach
+    @else
+        <p>pas d'avis</p>
+    @endif
+        </div>
 
     </div>
 </body>
